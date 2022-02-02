@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+
+<html id="top" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script>
+        function checkpassword() {
+            event.preventDefault()
+            if (document.getElementById("password").value == document.getElementById("passwordConfirm").value) {
+                if (document.getElementById("username").value.length > 1) {
+                    if (document.getElementById("password").value.length > 2)
+                        changevisibility("confirmation");
+                    else changevisibility("WarningPasswordTooShort")
+                }
+                else changevisibility("WarningUsernameTooShort")
+            }
+            else changevisibility("WarningPasswordsDontMatch")
+        }
+        function changevisibility(element) {
+            document.getElementById("confirmation").style.display = 'none';
+            document.getElementById("WarningPasswordTooShort").style.display = 'none';
+            document.getElementById("WarningUsernameTooShort").style.display = 'none';
+            document.getElementById("WarningPasswordsDontMatch").style.display = 'none';
+            document.getElementById(element).style.display = 'block';
+        }
+        function cancel()
+        {
+            document.getElementById('top').scrollIntoView({ behavior: 'smooth' });
+            setTimeout(function() {location.reload()}, 500);
+        }
+        function showpassword(element)
+        {
+            if(document.getElementById(element).type === "password")
+                document.getElementById(element).type = "text";
+            else document.getElementById(element).type = "password";
+        }
+    </script>
+    <meta charset="utf-8" />
+    <title>login</title>
+    <link rel="stylesheet" href="loginstylesheet.css" />
+</head>
+<body style="background-color: lightblue">
+    <form class="container" dir="rtl" onsubmit="checkpassword()">
+        <h1>הרשמה</h1>
+        <hr />
+        <label id="NameText">שם מלא</label>
+        <input id="firstName" type="text" required />
+        <input id="lastName" type="text" required />
+        <br /><br />
+        מין:
+        <input type="radio" id="genderFemale" name="Gender" onclick="document.getElementById('genderOtherText').hidden = true;" />נקבה
+        <input type="radio" id="genderMale" name="Gender" onclick="document.getElementById('genderOtherText').hidden = true;" />זכר
+        <input type="radio" id="genderOther" name="Gender" onclick="document.getElementById('genderOtherText').hidden = false;" />אחר
+        <input type="text" id="genderOtherText" name="Gender" hidden />
+        <br /><br />
+        גיל:
+        <input type="number" min="0"/>
+        <pre style="margin-bottom:0;margin-left:40px">
+            תאריך לידה    מדינה
+        </pre>
+        <input id="birthDate" type="date" />
+
+        <select name="Country">
+            <option> </option>
+            <option>ישראל</option>
+            <option>ארצות הברית</option>
+            <option>אנגליה</option>
+            <option>צרפת</option>
+            <option>ספרד</option>
+            <option>יפן</option>
+        </select>
+
+        <br /><br />
+        שם משתמש
+        <br />
+        <input id="username" type="text" required />
+
+        <br /><br />
+        הרהיט שלך
+        <br />
+        <input id="furniture" type="text" required />
+
+        <br /><br />
+        כתובת אימייל
+        <br />
+        <input id="email" type="email" />
+
+        <br /><br />
+        סיסמה
+        <br />
+        <input id="password" type="password" required />
+        <br/>
+        <input type="checkbox" onclick="showpassword('password')">הראה סיסמא
+
+        <br /><br /><br/>
+        אימות סיסמה
+        <br/>
+        <input id="passwordConfirm" type="password" required />
+        <br/>
+        <input type="checkbox" onclick="showpassword('passwordConfirm')">הראה סיסמא
+
+        <div id="confirmation" style="color: green; display: none">הרשמה בוצעה בהצלחה</div>
+        <div id="WarningPasswordsDontMatch" style="color: red; display: none">הסיסמאות לא תואמות </div>
+        <div id="WarningUsernameTooShort" style="color: red; display: none"> שם המשתמש קצר מדי</div>
+        <div id="WarningPasswordTooShort" style="color: red; display: none"> הסיסמה קצרה מידיי</div>
+        <br /><br />
+        <button type="submit" class="signupbtn bottombtn">המשכה</button>
+        <button type="button" class="cancelbtn bottombtn" onclick="cancel()">אפס</button>
+        <br /><br /><br />
+    </form>
+    <button class="backtoquiz" onclick="location.href = '../mustachedman.github.io/index.html'">Back to Quiz</button>
+</body>
+</html>

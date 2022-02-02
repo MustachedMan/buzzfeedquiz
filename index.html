@@ -1,0 +1,404 @@
+﻿ <!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="styles.css" />
+    <link id="exteriorfade" rel="stylesheet" href="fades/exteriorfade.css" disabled />
+    <link id="kitchenfade" rel="stylesheet" href="fades/kitchenfade.css" disabled />
+    <link id="diningfade" rel="stylesheet" href="fades/diningfade.css" disabled />
+    <link id="livingfade" rel="stylesheet" href="fades/livingfade.css" disabled />
+    <link id="outdoorfade" rel="stylesheet" href="fades/outdoorfade.css" disabled />
+    <link id="bedroomfade" rel="stylesheet" href="fades/bedroomfade.css" disabled />
+    <link id="backyardfade" rel="stylesheet" href="fades/backyardfade.css" disabled />
+    <style>
+        img:hover
+        {
+            transition: transform 0.4s ease;
+            transform: scale(1.5);
+            box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+            opacity: 1 !important;
+        }
+    </style>
+    <script>
+        var bed = 0;
+        var fan = 0;
+        var lamp = 0;
+        var fridge = 0;
+        var tv = 0;
+        var chair = 0;
+        var largest = 0;
+        function check(thing) {
+            if (document.querySelector(thing).value == "bed")
+                bed++;
+            if (document.querySelector(thing).value == "fan")
+                fan++;
+            if (document.querySelector(thing).value == "lamp")
+                lamp++;
+            if (document.querySelector(thing).value == "fridge")
+                fridge++;
+            if (document.querySelector(thing).value == "tv")
+                tv++;
+            if (document.querySelector(thing).value == "chair")
+                chair++;
+            var largest = Math.max(bed, fan, lamp, fridge, tv, chair)
+        }
+        function Confirm() {
+            var allanswered = true;
+            allanswered = FadeCheckCategory("exteriorfade");
+            allanswered = FadeCheckCategory("kitchenfade");
+            allanswered = FadeCheckCategory("diningfade");
+            allanswered = FadeCheckCategory("livingfade");
+            allanswered = FadeCheckCategory("outdoorfade");
+            allanswered = FadeCheckCategory("bedroomfade");
+            allanswered = FadeCheckCategory("backyardfade");
+            if (allanswered) {
+                var exterior = document.querySelector('input[name="exterior"]:checked').value;
+                var kitchen = document.querySelector('input[name="kitchen"]:checked').value;
+                var living = document.querySelector('input[name="living"]:checked').value;
+                var dining = document.querySelector('input[name="dining"]:checked').value;
+                var outdoor = document.querySelector('input[name="outdoor"]:checked').value;
+                var bedroom = document.querySelector('input[name="bedroom"]:checked').value;
+                var backyard = document.querySelector('input[name="backyard"]:checked').value;
+                check('input[name="exterior"]:checked')
+                check('input[name="kitchen"]:checked')
+                check('input[name="dining"]:checked')
+                check('input[name="living"]:checked')
+                check('input[name="outdoor"]:checked')
+                check('input[name="bedroom"]:checked')
+                check('input[name="backyard"]:checked')
+                var largest = Math.max(bed, fan, lamp, fridge, tv, chair)
+                if (largest == bed)
+                    location.href = "mustachedman.github.io/result/bed.html";
+                if (largest == fan)
+                    location.href = "mustachedman.github.io/result/fan.html";
+                if (largest == lamp)
+                    location.href = "mustachedman.github.io/result/lamp.html";
+                if (largest == fridge)
+                    location.href = "mustachedman.github.io/result/fridge.html";
+                if (largest == tv)
+                    location.href = "mustachedman.github.io/result/tv.html";
+                if (largest == chair)
+                    location.href = "mustachedman.github.io/result/chair.html";
+            }
+            else
+                document.getElementById("warning").hidden = false;
+        }
+        function FadeOtherOptions(category) {
+            document.getElementById(category).disabled = false
+            if (category == 'exteriorfade')
+            {
+                document.getElementById("kitchentitle").scrollIntoView({ behavior: 'smooth' });
+            }
+            if (category == 'kitchenfade') {
+                document.getElementById("diningtitle").scrollIntoView({ behavior: 'smooth' });
+            }
+            if (category == 'diningfade') {
+                document.getElementById("livingtitle").scrollIntoView({ behavior: 'smooth' });
+            }
+            if (category == 'livingfade') {
+                document.getElementById("outdoortitle").scrollIntoView({ behavior: 'smooth' });
+            }
+            if (category == 'outdoorfade') {
+                document.getElementById("bedroomtitle").scrollIntoView({ behavior: 'smooth' });
+            }
+            if (category == 'bedroomfade') {
+                document.getElementById("backyardtitle").scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        function FadeCheckCategory(thing) {
+            if (document.getElementById(thing).disabled == true)
+                return false;
+            return true;
+        }
+        window.onbeforeunload = function ()
+        {
+            window.scrollTo(0, 0);
+        }
+    </script>
+    <meta charset="utf-8" />
+    <title>Design a house and I'll tell you what furniture piece you are!</title>
+</head>
+<body style="background-color: #afccca ">
+    <div class="quizwrapper">
+        <h1>Design Your Dream House and I'll Tell You What Furniture Piece You Are</h1>
+        <hr />
+        <div style="color:cadetblue">By Natanel Izakov</div>
+        <hr />  
+        <p style="background-color:darkcyan" id="exteriortitle">Pick an exterior: </p>
+        <br />
+        <div class="description">
+            <label class="wrapper" id="exterioroption">
+                <input type="radio" name="exterior" onclick="FadeOtherOptions('exteriorfade')" value="bed" />
+                <img src="exterior/exterior1.jpg">
+            </label>
+            <label class="wrapper" id="exterioroption">
+                <input type="radio" name="exterior" onclick="FadeOtherOptions('exteriorfade')" value="fan">
+                <img src="exterior/exterior2.jpg">
+            </label>
+            <label class="wrapper" id="exterioroption">
+                <input type="radio" name="exterior" onclick="FadeOtherOptions('exteriorfade')" value="lamp">
+                <img src="exterior/exterior3.jpg">
+            </label>
+            <label class="wrapper" id="exterioroption">
+                <input type="radio" name="exterior" onclick="FadeOtherOptions('exteriorfade')" value="fridge">
+                <img src="exterior/exterior4.jpg">
+            </label>
+
+            <label class="wrapper" id="exterioroption">
+                <input type="radio" name="exterior" onclick="FadeOtherOptions('exteriorfade')" value="tv">
+                <img src="exterior/exterior5.jpg">
+            </label>
+
+            <label class="wrapper" id="exterioroption">
+                <input type="radio" name="exterior" onclick="FadeOtherOptions('exteriorfade')" value="chair">
+                <img src="exterior/exterior6.jpg">
+            </label>
+        </div>
+        <br />
+        <p style="background-color:red">Now pick a kitchen:</p>
+        <div class="description" id="kitchentitle">
+            <br />
+
+            <label class="wrapper" id="kitchenoption">
+                <input type="radio" name="kitchen" onclick="FadeOtherOptions('kitchenfade')" value="bed">
+                <img src="kitchen/kitchen1.jpg">
+            </label>
+
+
+            <label class="wrapper" id="kitchenoption">
+                <input type="radio" name="kitchen" onclick="FadeOtherOptions('kitchenfade')" value="fan">
+                <img src="kitchen/kitchen2.jpg">
+            </label>
+
+
+            <label class="wrapper" id="kitchenoption">
+                <input type="radio" name="kitchen" onclick="FadeOtherOptions('kitchenfade')" value="lamp">
+                <img src="kitchen/kitchen3.jpg">
+            </label>
+
+
+            <label class="wrapper" id="kitchenoption">
+                <input type="radio" name="kitchen" onclick="FadeOtherOptions('kitchenfade')" value="fridge">
+                <img src="kitchen/kitchen4.jpg">
+            </label>
+
+
+            <label class="wrapper" id="kitchenoption">
+                <input type="radio" name="kitchen" onclick="FadeOtherOptions('kitchenfade')" value="tv">
+                <img src="kitchen/kitchen5.jpg">
+            </label>
+
+
+            <label class="wrapper" id="kitchenoption">
+                <input type="radio" name="kitchen" onclick="FadeOtherOptions('kitchenfade')" value="chair">
+                <img src="kitchen/kitchen6.jpg">
+            </label>
+
+        </div>
+        <br />
+        <p style="background-color:black" id="diningtitle">Now pick a dining room:</p>
+        <div class="description">
+
+            <br />
+            <label class="wrapper" id="diningoption">
+                <input type="radio" name="dining" onclick="FadeOtherOptions('diningfade')" value="bed">
+                <img src="dining/dining1.jpg">
+            </label>
+
+            <label class="wrapper" id="diningoption">
+                <input type="radio" name="dining" onclick="FadeOtherOptions('diningfade')" value="fan" />
+                <img src="dining/dining2.jpg">
+            </label>
+
+
+            <label class="wrapper" id="diningoption">
+                <input type="radio" name="dining" onclick="FadeOtherOptions('diningfade')" value="lamp">
+                <img src="dining/dining3.png">
+            </label>
+
+
+            <label class="wrapper" id="diningoption">
+                <input type="radio" name="dining" onclick="FadeOtherOptions('diningfade')" value="fridge">
+                <img src="dining/dining4.jpg">
+            </label>
+
+
+            <label class="wrapper" id="diningoption">
+                <input type="radio" name="dining" onclick="FadeOtherOptions('diningfade')" value="tv">
+                <img src="dining/dining5.jpg">
+            </label>
+
+
+            <label class="wrapper" id="diningoption">
+                <input type="radio" name="dining" onclick="FadeOtherOptions('diningfade')" value="chair">
+                <img src="dining/dining6.jpg">
+            </label>
+
+        </div>
+        <br />
+        <p style="background-color:blue" id="livingtitle">Pick a living room:</p>
+        <div class="description">
+
+            <br />
+            <label class="wrapper" id="livingoption">
+                <input type="radio" name="living" onclick="FadeOtherOptions('livingfade')" value="bed">
+                <img src="living/living1.jpg">
+            </label>
+
+
+            <label class="wrapper" id="livingoption">
+                <input type="radio" name="living" onclick="FadeOtherOptions('livingfade')" value="fan" />
+                <img src="living/living2.jpg">
+            </label>
+
+
+            <label class="wrapper" id="livingoption">
+                <input type="radio" name="living" onclick="FadeOtherOptions('livingfade')" value="lamp">
+                <img src="living/living3.jpg">
+            </label>
+
+
+            <label class="wrapper" id="livingoption">
+                <input type="radio" name="living" onclick="FadeOtherOptions('livingfade')" value="fridge">
+                <img src="living/living4.jpeg">
+            </label>
+
+
+            <label class="wrapper" id="livingoption">
+                <input type="radio" name="living" onclick="FadeOtherOptions('livingfade')" value="tv">
+                <img src="living/living5.jpg">
+            </label>
+
+
+            <label class="wrapper" id="livingoption">
+                <input type="radio" name="living" onclick="FadeOtherOptions('livingfade')" value="chair">
+                <img src="living/living6.jpg">
+            </label>
+
+        </div>
+        <p style="background-color:deeppink" id="outdoortitle">Pick an area to leave in:</p>
+        <div class="description">
+
+            <br />
+            <br />
+            <label class="wrapper" id="outdooroption">
+                <input type="radio" name="outdoor" onclick="FadeOtherOptions('outdoorfade')" value="bed">
+                <img src="outdoor/outdoor1.jpg">
+            </label>
+
+
+            <label class="wrapper" id="outdooroption">
+                <input type="radio" name="outdoor" onclick="FadeOtherOptions('outdoorfade')" value="fan">
+                <img src="outdoor/outdoor2.jpg">
+            </label>
+
+
+            <label class="wrapper" id="outdooroption">
+                <input type="radio" name="outdoor" onclick="FadeOtherOptions('outdoorfade')" value="lamp">
+                <img src="outdoor/outdoor3.jpg">
+            </label>
+
+
+            <label class="wrapper" id="outdooroption">
+                <input type="radio" name="outdoor" onclick="FadeOtherOptions('outdoorfade')" value="fridge">
+                <img src="outdoor/outdoor4.jpg">
+            </label>
+
+
+            <label class="wrapper" id="outdooroption">
+                <input type="radio" name="outdoor" onclick="FadeOtherOptions('outdoorfade')" value="tv">
+                <img src="outdoor/outdoor5.jpg">
+            </label>
+
+
+            <label class="wrapper" id="outdooroption">
+                <input type="radio" name="outdoor" onclick="FadeOtherOptions('outdoorfade')" value="chair">
+                <img src="outdoor/outdoor6.jpg">
+            </label>
+
+        </div>
+        <p style="background-color:red" id="bedroomtitle">Pick a bedroom:</p>
+        <div class="description">
+
+            <br />
+            <br />
+            <label class="wrapper" id="bedroomoption">
+                <input type="radio" name="bedroom" onclick="FadeOtherOptions('bedroomfade')" value="bed">
+                <img src="bedroom/bedroom1.jpg">
+            </label>
+
+
+            <label class="wrapper" id="bedroomoption">
+                <input type="radio" name="bedroom" onclick="FadeOtherOptions('bedroomfade')" value="fan">
+                <img src="bedroom/bedroom2.jpg">
+            </label>
+
+
+            <label class="wrapper" id="bedroomoption">
+                <input type="radio" name="bedroom" onclick="FadeOtherOptions('bedroomfade')" value="lamp">
+                <img src="bedroom/bedroom3.jpg">
+            </label>
+
+
+            <label class="wrapper" id="bedroomoption">
+                <input type="radio" name="bedroom" onclick="FadeOtherOptions('bedroomfade')" value="fridge">
+                <img src="bedroom/bedroom4.jpg">
+            </label>
+
+
+            <label class="wrapper" id="bedroomoption">
+                <input type="radio" name="bedroom" onclick="FadeOtherOptions('bedroomfade')" value="tv">
+                <img src="bedroom/bedroom5.jpg">
+            </label>
+
+
+            <label class="wrapper" id="bedroomoption">
+                <input type="radio" name="bedroom" onclick="FadeOtherOptions('bedroomfade')" value="chair">
+                <img src="bedroom/bedroom6.jpg">
+            </label>
+
+        </div>
+        <p style="background-color:darkcyan" id="backyardtitle">Pick a backyard:</p>
+        <div class="description">
+
+            <br />
+            <br />
+            <label class="wrapper" id="backyardoption">
+                <input type="radio" name="backyard" onclick="FadeOtherOptions('backyardfade')" value="bed">
+                <img src="backyard/backyard1.jpg">
+            </label>
+
+
+            <label class="wrapper" id="backyardoption">
+                <input type="radio" name="backyard" onclick="FadeOtherOptions('backyardfade')" value="fan">
+                <img src="backyard/backyard2.jpg">
+            </label>
+
+
+            <label class="wrapper" id="backyardoption">
+                <input type="radio" name="backyard" onclick="FadeOtherOptions('backyardfade')" value="lamp">
+                <img src="backyard/backyard3.jpg">
+            </label>
+
+
+            <label class="wrapper" id="backyardoption">
+                <input type="radio" name="backyard" onclick="FadeOtherOptions('backyardfade')" value="fridge">
+                <img src="backyard/backyard4.jpg">
+            </label>
+
+
+            <label class="wrapper" id="backyardoption">
+                <input type="radio" name="backyard" onclick="FadeOtherOptions('backyardfade')" value="tv">
+                <img src="backyard/backyard5.jpg">
+            </label>
+
+
+            <label class="wrapper" id="backyardoption">
+                <input type="radio" name="backyard" onclick="FadeOtherOptions('backyardfade')" value="chair">
+                <img src="backyard/backyard6.jpg">
+            </label>
+        </div>
+        <center><button class="button" onclick="Confirm()"><span>Show me</span></button></center>
+        <center id="warning" style="color:red" hidden="hidden">Not all options have been picked</center>
+    </div>
+</body>
+</html>

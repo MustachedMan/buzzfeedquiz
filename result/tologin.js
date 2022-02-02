@@ -1,0 +1,2 @@
+function tologin(){location.href = '../mustachedman.github.io/../mustachedman.github.io/login.html'}
+function toquiz(){location.href = '../mustachedman.github.io/../mustachedman.github.io/Quiz Page.html'}
