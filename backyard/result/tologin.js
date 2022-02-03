@@ -1,1 +1,1 @@
-function tologin(){location.href = '../buzzfeedquiz.github.io/login.html'}
+function tologin(){location.href = '../login.html'}

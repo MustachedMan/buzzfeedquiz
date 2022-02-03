@@ -1,2 +1,2 @@
-function tologin(){location.href = '../buzzfeedquiz.github.io/login.html'}
-function toquiz(){location.href = '../buzzfeedquiz.github.io/Quiz Page.html'}
+function tologin(){location.href = '../login.html'}
+function toquiz(){location.href = '../Quiz Page.html'}
