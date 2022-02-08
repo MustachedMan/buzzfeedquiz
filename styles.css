@@ -95,6 +95,7 @@ body, html {
     width: 100%;
     height: 100%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    overflow-x:no-display;
 }
 .objectwrapper:hover #slide {
     transition: 1s;
@@ -102,7 +103,7 @@ body, html {
 }
 
 .objectwrap {
-    margin:auto;
+    margin: 0 auto;
     padding: 16px;
     width: 700px;
     border-radius: 5px;
@@ -112,40 +113,65 @@ body, html {
     -moz-transform-origin: 0 0;
     font-size: 20px;
     background-color: white;
+    position: absolute;
+    transform: translateX(3000px);
+    animation: slide-right 0.5s forwards;
+    transform: translateX(-100%);
+}
+
+@keyframes slide-right {
+    to {
+        transform: translateX(100%);
+    }
 }
 
 .quizwrapper, .signup {
     padding: 16px;
-    margin:auto;
+    margin: auto;
     width: 380px;
     border-radius: 5px;
     border: 1px dashed;
     background-color: white;
 }
-.quizwrapper {
-    zoom: 1.25;
-    -moz-transform: scale(1.25);
-    -moz-transform-origin: 0 0;
+
+    .quizwrapper {
+        zoom: 2.5;
+        -moz-transform: scale(2.5);
+        -moz-transform-origin: 0 0;
+    }
+
+    .signup {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-align: center;
+        width: 350px;
+        right: 25px;
+        top: 40px;
+        position: absolute;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-top: 0px;
+        color: steelblue;
+        text-align: center;
+    }
+
+    .gobackbutton {
+        float: right;
+        zoom: 0.6;
+        -moz-transform: scale(0.6);
+        -moz-transform-origin: 0 0;
+        border-radius: 10px;
+    }
+
+    @-webkit-keyframes slide {
+        100% {
+        left: 0;
+    }
 }
-.signup {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: center;
-    width: 350px;
-    right: 25px;
-    top: 40px;
-    position: absolute;
-}
-h1
-{
-    font-size: 28px;
-    margin-top: 0px;
-    color: steelblue;
-    text-align:center;
-}
-.gobackbutton {
-    float: right;
-    zoom: 0.6;
-    -moz-transform: scale(0.6);
-    -moz-transform-origin: 0 0;
-    border-radius: 10px;
+
+@keyframes slide {
+    100% {
+        left: 0;
+    }
 }
