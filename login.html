@@ -39,6 +39,11 @@
     <link rel="stylesheet" href="loginstylesheet.css" />
 </head>
 <body style="background-color: lightblue">
+    <ul class="menu">
+        <li class="menu"><a href="login.html">The Quiz</a></li>
+        <li class="menu"><a href="signup.html">Our Forum</a></li>
+        <li class="menu"><a href="signup.html" class="active">Somewhere on the Website...</a></li>
+    </ul>
     <form class="container" dir="rtl" onsubmit="checkpassword()">
         <h1>הרשמה</h1>
         <hr />
@@ -53,7 +58,7 @@
         <input type="text" id="genderOtherText" name="Gender" hidden />
         <br /><br />
         גיל:
-        <input type="number" min="0"/>
+        <input type="number" min="0" />
         <pre style="margin-bottom:0;margin-left:40px">
             תאריך לידה    מדינה
         </pre>
@@ -88,14 +93,14 @@
         סיסמה
         <br />
         <input id="password" type="password" required />
-        <br/>
+        <br />
         <input type="checkbox" onclick="showpassword('password')">הראה סיסמא
 
-        <br /><br /><br/>
+        <br /><br /><br />
         אימות סיסמה
-        <br/>
+        <br />
         <input id="passwordConfirm" type="password" required />
-        <br/>
+        <br />
         <input type="checkbox" onclick="showpassword('passwordConfirm')">הראה סיסמא
 
         <div id="confirmation" style="color: green; display: none">הרשמה בוצעה בהצלחה</div>
@@ -107,6 +112,5 @@
         <button type="button" class="cancelbtn bottombtn" onclick="cancel()">אפס</button>
         <br /><br /><br />
     </form>
-    <button class="backtoquiz" onclick="location.href = '../index.html'">Back to Quiz</button>
-</body>
+    </body>
 </html>

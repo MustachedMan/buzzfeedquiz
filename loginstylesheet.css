@@ -75,3 +75,53 @@ body,pre
     border: 1px dashed;
     background-color: white;
 }
+ul.menu {
+    list-style-type: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+li.menu {
+    width: 100%;
+    float: left;
+    border-right: 1px solid #bbb;
+    text-align: center;
+}
+
+    li.menu a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        margin: 0;
+        border: 1px dashed;
+        text-decoration: none;
+    }
+
+.active {
+    background-color: cadetblue;
+}
+
+body {
+    margin: 0;
+}
+
+.workinprogress {
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    overflow: hidden;
+}
